@@ -10,16 +10,40 @@ Build-Depends:
  dh-python,
 Standards-Version: 4.0.0
 
-Package: turnkey-php-common
+Package: turnkey-php
 Architecture: any
 Depends:
  ${python3:Depends},
-Description: PHP metapackage version setter, common files
+Description: PHP metapackage version setter script, common files
+
+Package: turnkey-php-apache-default
+Architecture: any
+Depends:
+ turnkey-php-default,
+ libapache2-mod-php7.4
+Conflicts:
+ turnkey-php-apache-7.3,
+ turnkey-php-apache-7.4,
+ turnkey-php-apache-8.0,
+ turnkey-php-apache-8.1
+Description: PHP Apache meta package - default
+
+Package: turnkey-php-fpm-default
+Architecture: any
+Depends:
+ turnkey-php-default,
+ php7.4-fpm
+Conflicts:
+ turnkey-php-fpm-7.3,
+ turnkey-php-fpm-7.4,
+ turnkey-php-fpm-8.0,
+ turnkey-php-fpm-8.1
+Description: PHP-FPM meta package - default
 
 Package: turnkey-php-default
 Architecture: any
 Depends:
- turnkey-php-common,
+ turnkey-php,
  php7.4,
  php7.4-cli,
  php7.4-common,
@@ -35,10 +59,34 @@ Description: PHP metapackage version setter, default Debian Bullseye packages
  This program allows you to choose which PHP version is installed and used by
  the system.
 
+Package: turnkey-php-apache-7.3
+Architecture: any
+Depends:
+ turnkey-php-7.3,
+ libapache2-mod-php7.3
+Conflicts:
+ turnkey-php-apache-default,
+ turnkey-php-apache-7.4,
+ turnkey-php-apache-8.0,
+ turnkey-php-apache-8.1
+Description: PHP Apache meta package - 7.3
+
+Package: turnkey-php-fpm-7.3
+Architecture: any
+Depends:
+ turnkey-php-7.3,
+ php7.3-fpm
+Conflicts:
+ turnkey-php-fpm-default,
+ turnkey-php-fpm-7.4,
+ turnkey-php-fpm-8.0,
+ turnkey-php-fpm-8.1
+Description: PHP-FPM meta package - default
+
 Package: turnkey-php-7.3
 Architecture: any
 Depends:
- turnkey-php-common,
+ turnkey-php,
  php7.3,
  php7.3-cli,
  php7.3-common,
@@ -54,10 +102,34 @@ Description: PHP metapackage version setter, sury.org PHP7.3 packages
  This program allows you to choose which PHP version is installed and used by
  the system.
 
+Package: turnkey-php-apache-7.4
+Architecture: any
+Depends:
+ turnkey-php-7.4,
+ libapache2-mod-php7.4
+Conflicts:
+ turnkey-php-apache-default,
+ turnkey-php-apache-7.3,
+ turnkey-php-apache-8.0,
+ turnkey-php-apache-8.1
+Description: PHP Apache meta package - 7.4
+
+Package: turnkey-php-fpm-7.4
+Architecture: any
+Depends:
+ turnkey-php-7.4,
+ php7.4-fpm
+Conflicts:
+ turnkey-php-fpm-default,
+ turnkey-php-fpm-7.3,
+ turnkey-php-fpm-8.0,
+ turnkey-php-fpm-8.1
+Description: PHP-FPM meta package - 7.4
+
 Package: turnkey-php-7.4
 Architecture: any
 Depends:
- turnkey-php-common,
+ turnkey-php,
  php7.4,
  php7.4-cli,
  php7.4-common,
@@ -73,10 +145,34 @@ Description: PHP metapackage version setter, sury.org PHP7.4 packages
  This program allows you to choose which PHP version is installed and used by
  the system.
 
+Package: turnkey-php-apache-8.0
+Architecture: any
+Depends:
+ turnkey-php-8.0,
+ libapache2-mod-php8.0
+Conflicts:
+ turnkey-php-apache-default,
+ turnkey-php-apache-7.3,
+ turnkey-php-apache-7.4,
+ turnkey-php-apache-8.1
+Description: PHP Apache meta package - 8.0
+
+Package: turnkey-php-fpm-8.0
+Architecture: any
+Depends:
+ turnkey-php-8.0,
+ php8.0-fpm
+Conflicts:
+ turnkey-php-fpm-default,
+ turnkey-php-fpm-7.3,
+ turnkey-php-fpm-7.4,
+ turnkey-php-fpm-8.1
+Description: PHP-FPM meta package - 8.0
+
 Package: turnkey-php-8.0
 Architecture: any
 Depends:
- turnkey-php-common,
+ turnkey-php,
  php8.0,
  php8.0-cli,
  php8.0-common,
@@ -92,10 +188,34 @@ Description: PHP metapackage version setter, sury.org PHP8.0 packages
  This program allows you to choose which PHP version is installed and used by
  the system.
 
+Package: turnkey-php-apache-8.1
+Architecture: any
+Depends:
+ turnkey-php-8.1,
+ libapache2-mod-php8.1
+Conflicts:
+ turnkey-php-apache-default,
+ turnkey-php-apache-7.3,
+ turnkey-php-apache-7.4,
+ turnkey-php-apache-8.0
+Description: PHP Apache meta package - 8.1
+
+Package: turnkey-php-fpm-8.1
+Architecture: any
+Depends:
+ turnkey-php-8.1,
+ php8.1-fpm
+Conflicts:
+ turnkey-php-fpm-default,
+ turnkey-php-fpm-7.3,
+ turnkey-php-fpm-7.4,
+ turnkey-php-fpm-8.0
+Description: PHP-FPM meta package - 8.1
+
 Package: turnkey-php-8.1
 Architecture: any
 Depends:
- turnkey-php-common,
+ turnkey-php,
  php8.1,
  php8.1-cli,
  php8.1-common,
