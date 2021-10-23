@@ -17,11 +17,14 @@ PHP_DEFAULTS = {'buster': '7.3',
                 'bullseye': '7.4'}
 
 LIB = Path('/var/lib/turnkey-php')
-LIB.mkdir(parents=True, exist_ok=True)
 
 
 class TklPhpError(Exception):
     pass
+
+
+def _init():
+    LIB.mkdir(parents=True, exist_ok=True)
 
 
 def _ver_sort_key(e: Any) -> Tuple[int, Any]:

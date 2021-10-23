@@ -59,7 +59,7 @@ def main():
         actual_version = args.php_version
     for line in output:
         print(line)
-
+    turnkey_php_lib._init()
 
 if __name__ == '__main__':
     main()
