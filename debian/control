@@ -20,6 +20,11 @@ Depends:
  php7.4-json,
  php7.4-opcache,
  php7.4-readline
+Conflicts:
+ turnkey-php-7.3,
+ turnkey-php-7.4,
+ turnkey-php-8.0,
+ turnkey-php-8.1
 Description: PHP metapackage version setter, default Debian Bullseye packages
  This program allows you to choose which PHP version is installed and used by
  the system.
@@ -34,6 +39,12 @@ Depends:
  php7.3-json,
  php7.3-opcache,
  php7.3-readline
+Conflicts:
+ turnkey-php-default,
+ turnkey-php-7.4,
+ turnkey-php-8.0,
+ turnkey-php-8.1
+
 Description: PHP metapackage version setter, sury.org PHP7.3 packages
  This program allows you to choose which PHP version is installed and used by
  the system.
@@ -48,6 +59,12 @@ Depends:
  php7.4-json,
  php7.4-opcache,
  php7.4-readline
+Conflicts:
+ turnkey-php-default,
+ turnkey-php-7.3,
+ turnkey-php-8.0,
+ turnkey-php-8.1
+
 Description: PHP metapackage version setter, sury.org PHP7.4 packages
  This program allows you to choose which PHP version is installed and used by
  the system.
@@ -62,6 +79,11 @@ Depends:
  php8.0-json,
  php8.0-opcache,
  php8.0-readline
+Conflicts:
+ turnkey-php-default,
+ turnkey-php-7.3,
+ turnkey-php-7.4,
+ turnkey-php-8.1
 Description: PHP metapackage version setter, sury.org PHP8.0 packages
  This program allows you to choose which PHP version is installed and used by
  the system.
@@ -76,6 +98,11 @@ Depends:
  php8.1-json,
  php8.1-opcache,
  php8.1-readline
+Conflicts:
+ turnkey-php-default,
+ turnkey-php-7.3,
+ turnkey-php-7.4,
+ turnkey-php-8.0
 Description: PHP metapackage version setter, sury.org PHP8.1 packages
  This program allows you to choose which PHP version is installed and used by
  the system.
