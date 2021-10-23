@@ -44,7 +44,6 @@ Conflicts:
  turnkey-php-7.4,
  turnkey-php-8.0,
  turnkey-php-8.1
-
 Description: PHP metapackage version setter, sury.org PHP7.3 packages
  This program allows you to choose which PHP version is installed and used by
  the system.
@@ -64,7 +63,6 @@ Conflicts:
  turnkey-php-7.3,
  turnkey-php-8.0,
  turnkey-php-8.1
-
 Description: PHP metapackage version setter, sury.org PHP7.4 packages
  This program allows you to choose which PHP version is installed and used by
  the system.
