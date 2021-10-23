@@ -8,6 +8,58 @@ This is a collection of packages and a helper script, designed to make
 selection and/or update of PHP version super easy for TurnKey users.
 """
 
-SURY_KEY_URL = ""
+import argparse
 
-def check_sury_key()
+import turnkey_php_lib
+
+
+def main():
+    formatter_class = argparse.RawDescriptionHelpFormatter
+    parser = argparse.ArgumentParser(description=__doc__,
+                                     formatter_class=formatter_class)
+    parser.add_argument('php_version', metavar='PHP_V', default='default',
+                        choices=turnkey_php_lib.PHP_VERSIONS, nargs='?',
+                        help="The PHP version to install and make default." +
+                             " If not set, defaults to 'default'.")
+    parser.add_argument('-u', '--update-key', action='store_true',
+                        help="Update the sury.org apt key (if it has expired" +
+                             " or is missing)")
+    parser.add_argument('-f', '--force', action='store_true',
+                        help="Will force completetion even if errors occur" +
+                             " (will force update of key if used with '-u'"
+                             "|'--update-key')")
+    parser.add_argument('-C', '--cli-version', action='store_true',
+                        help="Return PHP cli version")
+    parser.add_argument('-A', '--apache-version', action='store_true',
+                        help="Return PHP Apache version")
+    parser.add_argument('-F', '--fpm-version', action='store_true',
+                        help="Return PHP-FPM version")
+    parser.add_argument('-V', '--all-versions', action='store_true',
+                        help="Return valid versions found for CLI, Apache &" +
+                             " FPM")
+    parser.add_argument('-J', '--all-versions-json', action='store_true',
+                        help="Return valid versions found for CLI, Apache &" +
+                             " FPM (JSON format)")
+    args = parser.parse_args()
+    print(args)
+    print(args.php_version)
+    if args.all_versions_json:
+        print(turnkey_php_lib.get_current_versions())
+        sys.exit(0)
+    output: List = []
+    if args.all_versions or args.cli_version:
+        output.append(f"PHP (/usr/bin/php): {turnkey_php_lib.get_php_cli_v()}")
+    if args.all_versions or args.apache_version:
+        output.append(f"PHP Apache2 (mod_php): {turnkey_php_lib.get_php_apache_v()}")
+    if args.all_versions or args.fpm_version:
+        output.append(f"PHP-FPM: {turnkey_php_lib.get_php_fpm_v()}")
+    if args.php_version == 'default':
+        actual_version = turnkey_php_lib.get_php_default()
+    else:
+        actual_version = args.php_version
+    for line in output:
+        print(line)
+
+
+if __name__ == '__main__':
+    main()
