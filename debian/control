@@ -1,0 +1,81 @@
+Source: turnkey-php
+Section: misc
+Priority: optional
+Maintainer: Jeremy Davis <jeremy@turnkeylinux.org>
+Build-Depends:
+ debhelper (>= 10),
+Standards-Version: 4.0.0
+
+Package: turnkey-php-common
+Architecture: any
+Description: PHP metapackage version setter, common files
+
+Package: turnkey-php-default
+Architecture: any
+Depends:
+ turnkey-php-common,
+ php7.4,
+ php7.4-cli,
+ php7.4-common,
+ php7.4-json,
+ php7.4-opcache,
+ php7.4-readline
+Description: PHP metapackage version setter, default Debian Bullseye packages
+ This program allows you to choose which PHP version is installed and used by
+ the system.
+
+Package: turnkey-php-7.3
+Architecture: any
+Depends:
+ turnkey-php-common,
+ php7.3,
+ php7.3-cli,
+ php7.3-common,
+ php7.3-json,
+ php7.3-opcache,
+ php7.3-readline
+Description: PHP metapackage version setter, sury.org PHP7.3 packages
+ This program allows you to choose which PHP version is installed and used by
+ the system.
+
+Package: turnkey-php-7.4
+Architecture: any
+Depends:
+ turnkey-php-common,
+ php7.4,
+ php7.4-cli,
+ php7.4-common,
+ php7.4-json,
+ php7.4-opcache,
+ php7.4-readline
+Description: PHP metapackage version setter, sury.org PHP7.4 packages
+ This program allows you to choose which PHP version is installed and used by
+ the system.
+
+Package: turnkey-php-8.0
+Architecture: any
+Depends:
+ turnkey-php-common,
+ php8.0,
+ php8.0-cli,
+ php8.0-common,
+ php8.0-json,
+ php8.0-opcache,
+ php8.0-readline
+Description: PHP metapackage version setter, sury.org PHP8.0 packages
+ This program allows you to choose which PHP version is installed and used by
+ the system.
+
+Package: turnkey-php-8.1
+Architecture: any
+Depends:
+ turnkey-php-common,
+ php8.1,
+ php8.1-cli,
+ php8.1-common,
+ php8.1-json,
+ php8.1-opcache,
+ php8.1-readline
+Description: PHP metapackage version setter, sury.org PHP8.1 packages
+ This program allows you to choose which PHP version is installed and used by
+ the system.

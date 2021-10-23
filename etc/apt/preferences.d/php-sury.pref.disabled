@@ -1,0 +1,45 @@
+Package: *
+Pin: origin packages.sury.org
+Pin-Priority: 10
+
+Package: php-*
+Pin: origin packages.sury.org
+Pin-Priority: 550
+
+Package: libapache2-mod-php
+Pin: origin packages.sury.org
+Pin-Priority: 550
+
+Package: php-pear
+Pin: origin packages.sury.org
+Pin-Priority: 550
+
+Package: php-imagick
+Pin: origin packages.sury.org
+Pin-Priority: 550
+
+Package: libpcre3
+Pin: origin packages.sury.org
+Pin-Priority: 550
+
+Package: libzip4
+Pin: origin packages.sury.org
+Pin-Priority: 550
+
+# only enable below if using latest php version
+#Package: php-common
+#Pin: origin packages.sury.org
+#Pin-Priority: 550
+
+#Package: php-imagick
+#Pin: origin packages.sury.org
+#Pin-Priority: 550
+
+#Package: php-redis
+#Pin: origin packages.sury.org
+#Pin-Priority: 550
+
+#Package: php-igbinary
+#Pin: origin packages.sury.org
+#Pin-Priority: 550
+

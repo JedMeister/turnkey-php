@@ -1,0 +1,3 @@
+# DEB.SURY.ORG repo for php
+
+deb [signed-by=] https://packages.sury.org/php/  main

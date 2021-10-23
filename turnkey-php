@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+
+"""
+TurnKey PHP version alternate version selection & installation tool
+===================================================================
+
+This is a collection of packages and a helper script, designed to make
+selection and/or update of PHP version super easy for TurnKey users.
+"""
+
+SURY_KEY_URL = ""
+
+def check_sury_key()
