@@ -4,10 +4,16 @@ Priority: optional
 Maintainer: Jeremy Davis <jeremy@turnkeylinux.org>
 Build-Depends:
  debhelper (>= 10),
+ python3 (>= 3.7),
+ python3-all (>= 3.7~),
+ python3-setuptools,
+ dh-python,
 Standards-Version: 4.0.0
 
 Package: turnkey-php-common
 Architecture: any
+Depends:
+ ${python3:Depends},
 Description: PHP metapackage version setter, common files
 
 Package: turnkey-php-default
