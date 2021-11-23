@@ -15,9 +15,16 @@ SURY_KEY_LOC = "/usr/share/keyrings/php-sury.org.gpg"
 PHP_VERSIONS = ['default', '7.3', '7.4', '8.0', '8.1']
 PHP_DEFAULTS = {'buster': '7.3',
                 'bullseye': '7.4'}
+PACKAGES = ['php{PHP_V}', 'php{PHP_V}-common', 'php{PHP_V}-cli',
 
+WEBSERVERS = {'apache': 'libapache2-mod-php{PHP_V}',
+              'php-fpm': 'php{PHP_V}-fpm']
+DATABASES = ['mysql': 'php{PHP_V}-mysql',
+             'pgsql': 'php{PHP_V}-pgsql']
 LIB = Path('/var/lib/turnkey-php')
-
+TPL = Path('/usr/share/turnkey-php/templates')
+CODENAME = subprocess.run(['lsb_release', '-sc'],
+                          stdout=PIPE, text=True).stdout.strip()
 
 class TklPhpError(Exception):
     pass
@@ -25,6 +32,31 @@ class TklPhpError(Exception):
 
 def _init():
     LIB.mkdir(parents=True, exist_ok=True)
+
+
+def copy_files(codename: str = None, php_v: str = None):
+    if not codename:
+        codename = CODENAME
+    if not php_v:
+        php_v = PHP_DEFAULTS.get(codename, None)
+    if not php_v:
+        return False
+    sources = Path('/etc/apt/sources.list.d')
+    preferences = Path('/etc/apt/preferences.d')
+    sources_tpl = Path(TPL, 'apt_sources.list')
+    prefs_tpl = Path(TPL, 'apt_preferences.pref')
+    with open(Path(sources, 'php.list.disabled'), 'w') as src_fob:
+        with open(sources_tpl, 'r') as tpl_fob:
+            for tpl_line in tpl_fob:
+                if 'CODENAME' in tpl_line:
+                    tpl_line = tpl_line.format(CODENAME=codename)
+                src_fob.write(tpl_line)
+    with open(Path(preferences, 'php-sury.pref'), 'w') as prf_fob:
+        with open(prefs_tpl, 'r') as tpl_fob:
+            for tpl_line in tpl_fob:
+                if 'PHP_V' in tpl_line:
+                    tpl_line = tpl_line.format(PHP_V=php_v)
+    return True
 
 
 def _ver_sort_key(e: Any) -> Tuple[int, Any]:

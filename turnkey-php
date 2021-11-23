@@ -14,13 +14,25 @@ import turnkey_php_lib
 
 
 def main():
+    turnkey_php_lib._init()
     formatter_class = argparse.RawDescriptionHelpFormatter
+    _epilog = ("Include PHP version in all package names in future" +
+               " installs. E.g. phpX.Y-module")
     parser = argparse.ArgumentParser(description=__doc__,
-                                     formatter_class=formatter_class)
+                                     formatter_class=formatter_class,
+                                     epilog=_epilog)
     parser.add_argument('php_version', metavar='PHP_V', default='default',
                         choices=turnkey_php_lib.PHP_VERSIONS, nargs='?',
-                        help="The PHP version to install and make default." +
+                        help="The PHP version to install and make default" +
                              " If not set, defaults to 'default'.")
+    parser.add_argument('-w', '--webserver',
+                        choices=turnkey_php_lib.WEBSERVERS,
+                        help="The webserver you are using or wish to use with" +
+                             " PHP (will search if not set).")
+    parser.add_argument('-d', '--database',
+                        choices=turnkey_php_lib.DATABASES,
+                        help="The database you are using or wish to use with" +
+                             " PHP (will search if not set).")
     parser.add_argument('-u', '--update-key', action='store_true',
                         help="Update the sury.org apt key (if it has expired" +
                              " or is missing)")
@@ -28,6 +40,9 @@ def main():
                         help="Will force completetion even if errors occur" +
                              " (will force update of key if used with '-u'"
                              "|'--update-key')")
+    parser.add_argument('-c', '--create-files', action='store_true',
+                        help="Create apt list and prefs file(s) if missing")
+
     parser.add_argument('-C', '--cli-version', action='store_true',
                         help="Return PHP cli version")
     parser.add_argument('-A', '--apache-version', action='store_true',
@@ -43,6 +58,7 @@ def main():
     args = parser.parse_args()
     print(args)
     print(args.php_version)
+
     if args.all_versions_json:
         print(turnkey_php_lib.get_current_versions())
         sys.exit(0)
@@ -59,7 +75,7 @@ def main():
         actual_version = args.php_version
     for line in output:
         print(line)
-    turnkey_php_lib._init()
+
 
 if __name__ == '__main__':
     main()
